@@ -19,3 +19,14 @@ variable "environment" {
     error_message = "Environment name must be dev, staging or prod"
   }
 }
+
+variable "project_name" {
+  description = "Name of the project"
+  type        = string
+  default     = "ContentModeration"
+
+  validation {
+    condition     = can(regex("^[a-z0-9-]+$", var.project_name))
+    error_message = "Project name must only have lowercase letters, numbers and hyphens"
+  }
+}
