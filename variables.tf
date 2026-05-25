@@ -23,10 +23,23 @@ variable "environment" {
 variable "project_name" {
   description = "Name of the project"
   type        = string
-  default     = "ContentModeration"
+  default     = "contentmoderation"
 
   validation {
     condition     = can(regex("^[a-z0-9-]+$", var.project_name))
     error_message = "Project name must only have lowercase letters, numbers and hyphens"
   }
+}
+
+variable "s3_versioning_enabled" {
+  description = "Enable versioning on S3 buckets"
+  type        = bool
+  default     = true
+}
+
+variable "s3_encryption_enabled" {
+  description = "Enable server-side encryption on S3 buckets"
+  type        = bool
+  default     = true
+
 }
